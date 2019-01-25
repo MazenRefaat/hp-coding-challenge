@@ -1,5 +1,26 @@
 /* Styles for the App container component */
 
 .hp-app__container {
+    main {
+        .loadHotels {
+            display: block;
+            margin: 30px auto;
+            font-size: 16px;
+            color: rgb(161, 77, 146);
+            padding: 7px 15px;
+            cursor: pointer;
+            outline: none;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px -4px #000;
+            transition: box-shadow 0.3s linear, border-color 0.3s linear;
+            
+            &:active {
+                box-shadow: none;
+                border-color: transparent;
+                
+            }
+        }
+
+    }
     
 }

@@ -1,0 +1,20 @@
+/* Styles for the Header component */
+.hp-app__header {
+    display: flex;
+    justify-content: center;
+    background-color: #6A3460;
+
+    nav {
+        width: 60%; 
+
+        >a {
+            display: block;
+            width: 250px;
+
+            >img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
