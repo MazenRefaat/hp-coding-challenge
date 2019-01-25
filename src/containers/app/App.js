@@ -11,7 +11,11 @@ class App extends Component {
         hotels: []
     }
 
-    loadHotels= () => {
+    /* getHotels function for Hotels' fetch & show */
+    getHotels= () => {
+        this.setState({
+            isLoading: true
+        })
         /* 
             - Fetch hotels through API.
             - Applying '?count=5' parameter in API call for retrieving only 5 Hotels.
@@ -33,7 +37,8 @@ class App extends Component {
              */
             response.json()
             .then(hotelsData => this.setState({
-                hotels: hotelsData
+                hotels: hotelsData,
+                isLoading: false
             }));
             
         });
@@ -41,14 +46,15 @@ class App extends Component {
     }
 
     render(){
-        console.log(this.state.hotels);
         return (
             /* App Main wrapper div */
             <div className='hp-app__container'>
                 <Header />
 
                 <main>
-                    <button className="loadHotels" onClick={this.loadHotels}>Load Hotels</button>
+                    <div className="load-hotels">
+                        <button  onClick={this.getHotels}>Load Hotels</button>
+                    </div>
 
                     <HotelList hotels = { this.state.hotels }  />
                 </main>

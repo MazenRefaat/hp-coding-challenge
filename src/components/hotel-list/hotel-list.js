@@ -20,7 +20,7 @@ class HotelList extends Component {
         )
         return(
             <section className="hp-app__hotel-list">
-                {hotelList}
+                { hotelList }
             </section>
         )
     }

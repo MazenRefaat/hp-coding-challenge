@@ -1,103 +1,144 @@
-/* Styles for the Hotel List component */
-.hp-app__hotel-card {
-    display: flex;
-    margin-bottom: 25px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-
-    .card-img {
-        flex: 0 0 33.5%;
-        position: relative;
-        padding-top: 25%;
-        overflow: hidden;
-        border-radius: 5px 0 0 5px;
-
-        >img {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: auto;
-            width: 100%;
-            transition: transform 0.5s linear;
-
-            &:hover {
-                transform: scale(1.1);
-            }
-        }
+/* Styles for the Hotel Card component */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
+    25% {
+        transform: rotate(-90deg);
+    }
+    50% {
+        transform: rotate(-180deg);
+    }
+    75% {
+        transform: rotate(-270deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
 
-    .card-info {
-        width: 100%;
+.hp-app__hotel-card {
+    margin: 15px;
+    //border-radius: 5px;
+
+    .card-container {
         display: flex;
-        flex-direction: column;
-        padding: 15px;
+        border: 1px solid #aaa;
+        box-sizing: border-box;
 
-        .card-name-rate {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
+        .card-img {
+            flex: 0 0 33.5%;
+            position: relative;
+            padding-top: 25%;
+            overflow: hidden;
+            //border-radius: 5px 0 0 5px;
+            background-color: #ccc;
 
-            h1 {
-                font-size: 24px;
-                color: #333;
-                text-transform: capitalize;
-                margin: 0;
+            >img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: auto;
+                width: 100%;
+                transition: transform 0.5s linear;
 
-                >a {
-                    text-decoration: none;
+                &:hover {
+                    transform: scale(1.1);
                 }
             }
         }
 
-        .card-country-city {
-            >p {
-                margin-bottom: 5px;
-            }
-        }
-
-        .card-description {
-
-            p {
-                font-size: 14px;
-                margin: 4px 0;
-                overflow: hidden;
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-            }
-        }
-
-        .card-reviews-price {
+        .card-info {
             width: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto;
+            flex-direction: column;
+            padding: 15px;
 
-            .show-reviews {
-                button {
-                    font-size: 14px;
-                    padding: 10px 25px;
-                    cursor: pointer;
-                    border-radius: 3px;
-                    outline: none;
-                    transition: box-shadow 0.3s linear;
+            .card-name-rate {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
 
-                    &:hover {
-                        box-shadow: 0 0 10px -4px #000;
+                .name {
+                    font-size: 24px;
+                    color: #333;
+                    text-transform: capitalize;
+                    margin: 0;
+
+                    >a {
+                        text-decoration: none;
+                    }
+                }
+
+                .rate {
+                    >span {
+                        color: #f2b01e;
                     }
                 }
             }
 
-            .price-date {
-                p {
-                    margin: 2px 0;
+            .card-country-city {
+                >p {
+                    margin-bottom: 5px;
+                }
+            }
 
-                    &.price {
-                        font-size: 36px;
-                        text-align: right;
+            .card-description {
+                height: 45px;
+                overflow: hidden;
+
+                p {
+                    font-size: 12px;
+                    line-height: normal;
+                    margin: 4px 0;
+                    overflow: hidden;
+                    display: -webkit-box;
+                    display: box;
+                    line-clamp: 3;
+                    box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+            }
+
+            .card-reviews-price {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: auto;
+
+                .show-reviews {
+                    >button {
+                        font-size: 14px;
+                        padding: 10px 25px;
+                        cursor: pointer;
+                        border-radius: 3px;
+                        outline: none;
+                        transition: box-shadow 0.3s linear;
+
+                        &:hover {
+                            box-shadow: 0 0 10px -4px #000;
+                        }
+                    }
+
+                    >span {
+                        display: inline-block;
+                        margin-left: 10px;
+                        animation: spin 0.5s infinite;
+                    }
+                }
+
+                .price-date {
+                    p {
+                        margin: 2px 0;
+
+                        &.price {
+                            font-size: 36px;
+                            text-align: right;
+                        }
                     }
                 }
             }

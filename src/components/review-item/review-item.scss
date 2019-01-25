@@ -1,0 +1,32 @@
+/* Styles for Review Item component */
+.review-item {
+    display: flex;
+    color: #333;
+    padding: 15px 5px;
+
+    .impression {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 10%;
+        padding: 5px;
+        box-sizing: border-box;
+
+        >div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #333;
+            border-radius: 50%;
+        }
+    }
+
+    .content {
+        box-sizing: border-box;
+        flex: 0 0 90%;
+        padding-right: 25px;
+
+    }
+}
