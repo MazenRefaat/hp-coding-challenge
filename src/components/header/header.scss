@@ -18,3 +18,11 @@
         }
     }
 }
+
+@media (max-width: 991px) {
+    .hp-app__header {
+        nav {
+            width: 100%;
+        }
+    }
+}

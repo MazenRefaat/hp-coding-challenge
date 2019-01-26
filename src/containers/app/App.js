@@ -23,7 +23,6 @@ class App extends Component {
             - Applying '?count=5' parameter in API call for retrieving only 5 Hotels.
         */
 
-        console.log(this);
         fetch('http://fake-hotel-api.herokuapp.com/api/hotels?count=5')
         .then(response => {
             /* 

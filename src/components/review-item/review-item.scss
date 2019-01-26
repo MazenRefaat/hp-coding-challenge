@@ -3,6 +3,7 @@
     display: flex;
     color: #333;
     padding: 15px 5px;
+    border-bottom: 1px solid #f1f1f1;
 
     .impression {
         display: flex;
@@ -28,5 +29,16 @@
         flex: 0 0 90%;
         padding-right: 25px;
 
+    }
+
+    &:last-child {
+        border: none;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .review-item {
+        flex-direction: column;
     }
 }

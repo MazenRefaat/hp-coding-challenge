@@ -3,15 +3,19 @@
     0% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(-90deg);
     }
+
     50% {
         transform: rotate(-180deg);
     }
+
     75% {
         transform: rotate(-270deg);
     }
+
     100% {
         transform: rotate(-360deg);
     }
@@ -19,7 +23,6 @@
 
 .hp-app__hotel-card {
     margin: 15px;
-    //border-radius: 5px;
 
     .card-container {
         display: flex;
@@ -27,11 +30,10 @@
         box-sizing: border-box;
 
         .card-img {
-            flex: 0 0 33.5%;
+            flex: 1 0 33.5%;
             position: relative;
             padding-top: 25%;
             overflow: hidden;
-            //border-radius: 5px 0 0 5px;
             background-color: #ccc;
 
             >img {
@@ -55,6 +57,7 @@
             display: flex;
             flex-direction: column;
             padding: 15px;
+            box-sizing: border-box;
 
             .card-name-rate {
                 width: 100%;
@@ -111,6 +114,7 @@
                 margin-top: auto;
 
                 .show-reviews {
+                    order: 0;
                     >button {
                         font-size: 14px;
                         padding: 10px 25px;
@@ -132,6 +136,7 @@
                 }
 
                 .price-date {
+                    order: 1;
                     p {
                         margin: 2px 0;
 
@@ -139,6 +144,46 @@
                             font-size: 36px;
                             text-align: right;
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+
+    .hp-app__hotel-card {
+        .card-container {
+            flex-direction: column;
+
+            .card-img {
+                padding-top: 75%;
+            }
+
+            .card-info {
+                .card-name-rate {
+                    flex-direction: column;
+                }
+
+                .card-reviews-price {
+                    flex-direction: column;
+                    margin: 10px 0;
+
+                    .show-reviews { 
+                        order: 1;
+                        width: 100%;
+
+                        >button {
+                            width: 100%;
+                        }
+                    }
+
+                    .price-date {
+                        order: 0;
+                        width: 100%;
+                        margin: 10px 0;
+
                     }
                 }
             }

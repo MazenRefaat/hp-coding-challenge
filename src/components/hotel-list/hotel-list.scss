@@ -3,3 +3,9 @@
     width: 60%;
     margin: 15px auto;
 }
+
+@media (max-width: 991px) {
+    .hp-app__hotel-list {
+        width: 100%;
+    }
+}
