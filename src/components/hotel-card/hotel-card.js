@@ -109,11 +109,7 @@ class HotelCard extends Component {
                                 </button>
 
                                 {
-                                    this.state.isLoading
-                                    ?
-                                        <span className="spinner">&#8634;</span>
-                                    :
-                                        <span></span>
+                                    this.state.isLoading &&  <span className="spinner">&#8634;</span>
                                 }
                                 
                             </div>
@@ -133,11 +129,7 @@ class HotelCard extends Component {
                     </div>
                 </div>
                 {
-                    this.state.showReviews
-                    ?
-                    <ReviewList reviews = { this.state.reviews } />
-                    :
-                    <div></div>
+                    this.state.showReviews && <ReviewList reviews = { this.state.reviews } />                    
                 }
                 
             </div>

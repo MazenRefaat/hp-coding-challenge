@@ -8,7 +8,9 @@ import './App.scss';
 
 class App extends Component {
     state = {
-        hotels: []
+        hotels: [],
+        fetchError: false,
+        isLoading: false
     }
 
     /* getHotels function for Hotels' fetch & show */
@@ -21,6 +23,7 @@ class App extends Component {
             - Applying '?count=5' parameter in API call for retrieving only 5 Hotels.
         */
 
+        console.log(this);
         fetch('http://fake-hotel-api.herokuapp.com/api/hotels?count=5')
         .then(response => {
             /* 
@@ -29,6 +32,10 @@ class App extends Component {
                 - Show Error Panel.
             */
             if(!response.ok){
+                this.setState({
+                    fetchError: true,
+                    isLoading: false
+                })
                 throw Error("Error Retrieving Hotels");
             }
 
@@ -37,6 +44,7 @@ class App extends Component {
              */
             response.json()
             .then(hotelsData => this.setState({
+                fetchError: false,
                 hotels: hotelsData,
                 isLoading: false
             }));
@@ -54,9 +62,32 @@ class App extends Component {
                 <main>
                     <div className="load-hotels">
                         <button  onClick={this.getHotels}>Load Hotels</button>
-                    </div>
 
-                    <HotelList hotels = { this.state.hotels }  />
+                        {
+                            this.state.isLoading 
+                            &&  
+                            <div className="loading">
+                                <span>.</span>
+                                <span>.</span>
+                                <span>.</span>
+                            </div>
+                        }
+                    </div>
+                    {
+                        !this.state.fetchError
+                        ?
+                            <HotelList hotels = { this.state.hotels }  />
+                        :
+                            <section className="load-error">
+                                <p>
+                                    <span>
+                                        !
+                                    </span>
+
+                                    An Error occurred
+                                </p>
+                            </section>
+                    }
                 </main>
             </div>
         );

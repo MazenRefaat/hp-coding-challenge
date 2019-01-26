@@ -1,10 +1,29 @@
 /* Styles for the App container component */
 
+@keyframes loading {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .hp-app__container {
     main {
         .load-hotels {
             display: flex;
             justify-content: center;
+            align-items: center;
             
             >button {
                 display: inline-block;
@@ -24,9 +43,35 @@
                 }
             }
 
-            .spinner {
-                display: inline-block;
-                animation: spin 0.5s infinite;
+            .loading {
+                >span {
+                    animation: loading 0.3s infinite;
+                }
+            }
+        }
+
+        .load-error {
+            width: 60%;
+            margin: 0 auto;
+            border: 1px solid #ff0000;
+            padding: 0 15px;
+            border-radius: 5px;
+
+            p {
+                color: #ff0000;
+
+                span {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 25px;
+                    height: 25px;
+                    font-weight: bold;
+                    color: #fff;
+                    background-color: #ff0000;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
             }
         }
     }
