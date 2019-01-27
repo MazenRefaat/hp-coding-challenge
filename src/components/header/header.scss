@@ -1,28 +1,29 @@
 /* Styles for the Header component */
-.hp-app__header {
+.hp-header {
     display: flex;
     justify-content: center;
     background-color: #6A3460;
 
-    nav {
-        width: 60%; 
+    &__nav {
+        width: 60%;
+    }
 
-        >a {
-            display: block;
-            width: 250px;
+    &__link {
+        display: block;
+        width: 250px;
+    }
 
-            >img {
-                width: 100%;
-                height: auto;
-            }
-        }
+    &__logo {
+        width: 100%;
+        height: auto;
     }
 }
 
 @media (max-width: 991px) {
-    .hp-app__header {
-        nav {
+    .hp-header {
+        &__nav {
             width: 100%;
+            padding: 5px 15px;
         }
     }
 }

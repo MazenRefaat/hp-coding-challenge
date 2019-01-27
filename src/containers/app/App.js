@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Header from '../../components/header/header';
 import HotelList from '../../components/hotel-list/hotel-list';
+import { fetchHotels } from '../../services/api.service'
 
 /* App styles file import */
 import './App.scss';
@@ -14,61 +15,52 @@ class App extends Component {
     }
 
     /* getHotels function for Hotels' fetch & show */
-    getHotels= () => {
+    getHotels = () => {
+        /*
+            Show loading spinner until fetching done.
+        */        
         this.setState({
             isLoading: true
         })
-        /* 
-            - Fetch hotels through API.
-            - Applying '?count=5' parameter in API call for retrieving only 5 Hotels.
-        */
 
-        fetch('http://fake-hotel-api.herokuapp.com/api/hotels?count=5')
-        .then(response => {
-            /* 
-                - Check response status for the API fetch.
-                - Throw exception in case of any error.
-                - Show Error Panel.
-            */
-            if(!response.ok){
-                this.setState({
-                    fetchError: true,
-                    isLoading: false
-                })
-                throw Error("Error Retrieving Hotels");
-            }
-
+        fetchHotels().then((hotelsData)=>{
             /*
                 - Update hotels state in case of success.
-             */
-            response.json()
-            .then(hotelsData => this.setState({
+            */
+
+            this.setState({
                 fetchError: false,
                 hotels: hotelsData,
                 isLoading: false
-            }));
-            
+            })
+        }).catch(() => {
+            /* 
+                - Show Error Panel in case fetching issue.
+            */
+            this.setState({
+                fetchError: true,
+                isLoading: false
+            })
         });
-        
     }
 
     render(){
         return (
             /* App Main wrapper div */
-            <div className='hp-app__container'>
+            <div className='hp-app'>
                 <Header />
 
                 <main>
-                    <div className="load-hotels">
-                        <button  onClick={this.getHotels}>Load Hotels</button>
+                    <div className="hp-app__load-hotels">
+                        <button className="hp-app__load-hotels-btn"  onClick={this.getHotels}>Load Hotels</button>
 
                         {
                             this.state.isLoading 
                             &&  
-                            <div className="loading">
-                                <span>.</span>
-                                <span>.</span>
-                                <span>.</span>
+                            <div>
+                                <span className="loading">.</span>
+                                <span className="loading">.</span>
+                                <span className="loading">.</span>
                             </div>
                         }
                     </div>
@@ -77,14 +69,11 @@ class App extends Component {
                         ?
                             <HotelList hotels = { this.state.hotels }  />
                         :
-                            <section className="load-error">
-                                <p>
-                                    <span>
+                            <section className="hp-app__load-error">
+                                    <span className="warning-label">
                                         !
                                     </span>
-
                                     An Error occurred
-                                </p>
                             </section>
                     }
                 </main>

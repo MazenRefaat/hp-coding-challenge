@@ -18,7 +18,7 @@ const HotelList = (props) => {
         }
     )
     return(
-        <section className="hp-app__hotel-list">
+        <section className="hp-hotel-list">
             { hotelList }
         </section>
     )

@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
-import ReviewList from '../review-list/review-list'
+import ReviewList from '../review-list/review-list';
+
+import { fetchReviews } from '../../services/api.service';
 
 /* Hotel Card styles file import */
 import './hotel-card.scss';
@@ -34,12 +36,12 @@ class HotelCard extends Component {
                 isLoading: true
             });
 
-            fetch('http://fake-hotel-api.herokuapp.com/api/reviews?hotel_id='+ hotel.id)
-            .then(response => response.json())
-            .then(reviewsData => this.setState({
-                reviews: reviewsData,
-                isLoading: false
-            }));
+            fetchReviews(hotel.id).then(reviewsData => {
+                this.setState({
+                    reviews: reviewsData,
+                    isLoading: false
+                })
+            });
         }
 
         this.setState({
@@ -52,31 +54,29 @@ class HotelCard extends Component {
         const hotel = this.props.hotel;
 
         return(
-            <div className="hp-app__hotel-card">
-                <div className="card-container">
-                    <div className="card-img">
-                        <img src={hotel.images[0]} alt={hotel.name} title={hotel.name}/>
+            <div className="hp-card-container">
+                <div className="hp-card">
+                    <div className="hp-card__img-wrapper">
+                        <img className="hp-card__img" src={hotel.images[0]} alt={hotel.name} title={hotel.name}/>
                     </div>
                     
-                    <div className="card-info">
-                        <div className="card-name-rate">
-                            <h1 className="name">
-                                <a href="">
-                                    { hotel.name }
-                                </a>
-                            </h1>
+                    <div className="hp-card__info">
+                        <div className="hp-card__name-rate">
+                            <a className="hp-card__name" href="">
+                                { hotel.name }
+                            </a>
 
-                            <div className="rate">
+                            <div>
                                 {
-                                    _.times(hotel.stars, i => <span key={i}>&#9733;</span>)
+                                    _.times(hotel.stars, i => <span className="hp-card__rate" key={i}>&#9733;</span>)
                                 }
                                 {
-                                    _.times(5-hotel.stars, i => <span key={i}>&#9734;</span>)
+                                    _.times(5-hotel.stars, i => <span className="hp-card__rate" key={i}>&#9734;</span>)
                                 }
                             </div>
                         </div>
                         
-                        <div className="card-country-city">
+                        <div className="hp-card__country-city">
                             <p>
                                 <span>
                                     { hotel.city }
@@ -88,16 +88,16 @@ class HotelCard extends Component {
                             </p>
                         </div>
 
-                        <div className="card-description">
-                            <p>
+                        <div>
+                            <p className="hp-card__description">
                                 <b>Hotel Description: </b> 
                                 { hotel.description }
                             </p>
                         </div>
 
-                        <div className="card-reviews-price">
-                            <div className="show-reviews">
-                                <button onClick={ this.getReviews }>
+                        <div className="hp-card__reviews-price">
+                            <div className="hp-card__show-reviews">
+                                <button className="hp-card__show-reviews-btn" onClick={ this.getReviews }>
                                     {
                                         this.state.showReviews
                                         ?
@@ -114,12 +114,12 @@ class HotelCard extends Component {
                                 
                             </div>
                             
-                            <div className="price-date">
-                                <p className="price">
+                            <div className="hp-card__price-date">
+                                <p className="hp-card__price">
                                     { hotel.price }  €
                                 </p>
 
-                                <p className="date">
+                                <p className="hp-card__date">
                                     { this.formatDate(hotel.date_start) }
                                     &nbsp;-&nbsp;  
                                     { this.formatDate(hotel.date_end) }

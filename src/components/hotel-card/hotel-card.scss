@@ -1,192 +1,155 @@
 /* Styles for the Hotel Card component */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+@import '../../styles/animations.scss';
 
-    25% {
-        transform: rotate(-90deg);
-    }
-
-    50% {
-        transform: rotate(-180deg);
-    }
-
-    75% {
-        transform: rotate(-270deg);
-    }
-
-    100% {
-        transform: rotate(-360deg);
-    }
+.hp-card-container {
+    margin: 15px;
 }
 
-.hp-app__hotel-card {
-    margin: 15px;
+.hp-card {
+    display: flex;
+    border: 1px solid #aaa;
+    box-sizing: border-box;
 
-    .card-container {
+    &__img-wrapper {
+        flex: 1 0 33.5%;
+        position: relative;
+        padding-top: 25%;
+        overflow: hidden;
+        background-color: #ccc;
+
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        width: 100%;
+        transition: transform 0.5s linear;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__info {
+        width: 100%;
         display: flex;
-        border: 1px solid #aaa;
+        flex-direction: column;
+        padding: 15px;
         box-sizing: border-box;
+    }
 
-        .card-img {
-            flex: 1 0 33.5%;
-            position: relative;
-            padding-top: 25%;
-            overflow: hidden;
-            background-color: #ccc;
+    &__name-rate {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
 
-            >img {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                height: auto;
-                width: 100%;
-                transition: transform 0.5s linear;
+    &__name {
+        font-size: 24px;
+        color: #333;
+        text-transform: capitalize;
+        margin: 0;
+        text-decoration: none;
+    }
 
-                &:hover {
-                    transform: scale(1.1);
-                }
-            }
+    &__rate {
+        color: #f2b01e;
+    }
+
+    &__country-city {
+        margin-bottom: 5px;
+    }
+
+    &__description {
+        height: 45px;
+        overflow: hidden;
+        font-size: 12px;
+        line-height: normal;
+        margin: 4px 0;
+        overflow: hidden;
+        display: -webkit-box;
+        display: box;
+        line-clamp: 3;
+        box-orient: vertical;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    &__reviews-price {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+    }
+
+    &__show-reviews {
+        order: 0;
+    }
+
+    &__show-reviews-btn {
+        font-size: 14px;
+        padding: 10px 25px;
+        cursor: pointer;
+        border-radius: 3px;
+        outline: none;
+        transition: box-shadow 0.3s linear;
+
+        &:hover {
+            box-shadow: 0 0 10px -4px #000;
         }
+    }
 
-        .card-info {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 15px;
-            box-sizing: border-box;
+    &__price-date {
+        order: 1;
+    }
 
-            .card-name-rate {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
+    &__price,
+    &__date {
+        margin: 2px 0;
+    }
 
-                .name {
-                    font-size: 24px;
-                    color: #333;
-                    text-transform: capitalize;
-                    margin: 0;
-
-                    >a {
-                        text-decoration: none;
-                    }
-                }
-
-                .rate {
-                    >span {
-                        color: #f2b01e;
-                    }
-                }
-            }
-
-            .card-country-city {
-                >p {
-                    margin-bottom: 5px;
-                }
-            }
-
-            .card-description {
-                height: 45px;
-                overflow: hidden;
-
-                p {
-                    font-size: 12px;
-                    line-height: normal;
-                    margin: 4px 0;
-                    overflow: hidden;
-                    display: -webkit-box;
-                    display: box;
-                    line-clamp: 3;
-                    box-orient: vertical;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                }
-            }
-
-            .card-reviews-price {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-top: auto;
-
-                .show-reviews {
-                    order: 0;
-                    >button {
-                        font-size: 14px;
-                        padding: 10px 25px;
-                        cursor: pointer;
-                        border-radius: 3px;
-                        outline: none;
-                        transition: box-shadow 0.3s linear;
-
-                        &:hover {
-                            box-shadow: 0 0 10px -4px #000;
-                        }
-                    }
-
-                    .spinner {
-                        display: inline-block;
-                        margin-left: 10px;
-                        animation: spin 0.5s infinite;
-                    }
-                }
-
-                .price-date {
-                    order: 1;
-                    p {
-                        margin: 2px 0;
-
-                        &.price {
-                            font-size: 36px;
-                            text-align: right;
-                        }
-                    }
-                }
-            }
-        }
+    &__price {
+        font-size: 36px;
+        text-align: right;
     }
 }
 
 @media screen and (max-width: 991px) {
 
-    .hp-app__hotel-card {
-        .card-container {
+    .hp-card {
+        flex-direction: column;
+
+        &__img-wrapper {
+            padding-top: 75%;
+        }
+
+        &__name-rate {
             flex-direction: column;
+        }
 
-            .card-img {
-                padding-top: 75%;
-            }
+        &__reviews-price {
+            flex-direction: column;
+            margin: 10px 0;
+        }
 
-            .card-info {
-                .card-name-rate {
-                    flex-direction: column;
-                }
+        &__show-reviews {
+            order: 1;
+            width: 100%;
+        }
 
-                .card-reviews-price {
-                    flex-direction: column;
-                    margin: 10px 0;
+        &__show-reviews-btn {
+            width: 100%;
+        }
 
-                    .show-reviews { 
-                        order: 1;
-                        width: 100%;
-
-                        >button {
-                            width: 100%;
-                        }
-                    }
-
-                    .price-date {
-                        order: 0;
-                        width: 100%;
-                        margin: 10px 0;
-
-                    }
-                }
-            }
+        &__price-date {
+            order: 0;
+            width: 100%;
+            margin: 10px 0;
         }
     }
 }

@@ -1,11 +1,11 @@
 /* Styles for the Hotel List component */
-.hp-app__hotel-list {
+.hp-hotel-list {
     width: 60%;
     margin: 15px auto;
 }
 
 @media (max-width: 991px) {
-    .hp-app__hotel-list {
+    .hp-hotel-list {
         width: 100%;
     }
 }

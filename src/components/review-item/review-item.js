@@ -10,8 +10,8 @@ const ReviewItem = (props) => {
 
     return(
         <div className="review-item">
-            <div className="impression">
-                <div>
+            <div className="review-item__impression">
+                <div className="review-item__impression-wrapper">
                     <span>
                         {
                             review.positive 
@@ -24,12 +24,12 @@ const ReviewItem = (props) => {
                 </div>
             </div>
 
-            <div className="content">
-                <h3 className="name">
+            <div className="review-item__content">
+                <h3 className="review-item__name">
                     { review.name }
                 </h3>
 
-                <p className="review-text">
+                <p className="review-item__review-text">
                 { review.comment }
                 </p>
             </div>

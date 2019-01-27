@@ -1,78 +1,61 @@
 /* Styles for the App container component */
+@import '../../styles/animations.scss';
 
-@keyframes loading {
-    0% {
-        opacity: 0;
+.hp-app {
+    &__load-hotels {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    25% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-    75% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 0;
-    }
-}
 
-.hp-app__container {
-    main {
-        .load-hotels {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            >button {
-                display: inline-block;
-                margin: 30px 10px;
-                font-size: 16px;
-                color: rgb(161, 77, 146);
-                padding: 7px 15px;
-                cursor: pointer;
-                outline: none;
-                border: 1px solid #ccc;
-                box-shadow: 0 0 10px -4px #000;
-                transition: box-shadow 0.3s linear, border-color 0.3s linear;
+    &__load-hotels-btn {
+        display: inline-block;
+        margin: 30px 10px;
+        font-size: 16px;
+        color: rgb(161, 77, 146);
+        padding: 7px 15px;
+        cursor: pointer;
+        outline: none;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px -4px #000;
+        transition: box-shadow 0.3s linear, border-color 0.3s linear;
 
-                &:active {
-                    box-shadow: none;
-                    border-color: transparent;
-                }
-            }
-
-            .loading {
-                >span {
-                    animation: loading 0.3s infinite;
-                }
-            }
+        &:active {
+            box-shadow: none;
+            border-color: transparent;
         }
+    }
 
-        .load-error {
-            width: 60%;
-            margin: 0 auto;
-            border: 1px solid #ff0000;
-            padding: 0 15px;
-            border-radius: 5px;
+    &__loading {
+        animation: loading 0.3s infinite;
 
-            p {
-                color: #ff0000;
+    }
 
-                span {
-                    display: inline-flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 25px;
-                    height: 25px;
-                    font-weight: bold;
-                    color: #fff;
-                    background-color: #ff0000;
-                    border-radius: 50%;
-                    margin-right: 10px;
-                }
-            }
-        }
+    &__load-error {
+        width: 60%;
+        color: #ff0000;
+        margin: 0 auto;
+        border: 1px solid #ff0000;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .warning-label {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 25px;
+        height: 25px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #ff0000;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .spinner {
+        display: inline-block;
+        margin-left: 10px;
+        animation: spin 0.5s infinite;
     }
 }

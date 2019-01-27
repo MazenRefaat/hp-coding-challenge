@@ -20,7 +20,7 @@ const ReviewList = (props) => {
         }
     )
     return(
-        <section className="hp-app__review-list">
+        <section className="hp-review-list">
             { reviewList }
         </section>
     )
