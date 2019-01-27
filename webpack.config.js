@@ -7,6 +7,9 @@ module.exports = {
         path: path.join(__dirname, '/dist'),
         filename: 'app_bundle.js'
     },
+    devServer: {
+        disableHostCheck: true
+    },
     module: {
         rules: [
             {
