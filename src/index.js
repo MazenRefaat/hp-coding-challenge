@@ -1,5 +1,8 @@
 /* Entry file for rendering React App */
 /* Dependences related to Index */
+import 'core-js/fn/map';
+import 'core-js/fn/set';
+
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./containers/app/App.js";
