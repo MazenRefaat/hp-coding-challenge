@@ -50,7 +50,7 @@ class App extends Component {
             <div className='hp-app'>
                 <Header />
 
-                <main>
+                <section>
                     <div className="hp-app__load-hotels">
                         <button className="hp-app__load-hotels-btn"  onClick={this.getHotels}>Load Hotels</button>
 
@@ -76,7 +76,7 @@ class App extends Component {
                                     An Error occurred
                             </section>
                     }
-                </main>
+                </section>
             </div>
         );
     }
